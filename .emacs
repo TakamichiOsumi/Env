@@ -62,3 +62,14 @@
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-j") 'backward-word))
 (put 'downcase-region 'disabled nil)
+
+;; Notes about auto-complete installation :
+;;
+;; Refer to 'Manual Installation' in https://auto-complete.github.io/doc/manual.html#installation
+;;
+;; (when load-file-name
+;;   (setq user-emacs-directory (file-name-directory load-file-name)))
+;; (add-to-list 'load-path "~/.emacs.d")
+;; (require 'auto-complete-config)
+;; (global-auto-complete-mode t)
+;; (ac-config-default)
