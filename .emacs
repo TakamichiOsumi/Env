@@ -9,6 +9,8 @@
 (show-paren-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (c-set-offset 'case-label '+)
+(when (not (window-system))
+  (menu-bar-mode -1))
 
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
@@ -73,3 +75,8 @@
 ;; (require 'auto-complete-config)
 ;; (global-auto-complete-mode t)
 ;; (ac-config-default)
+
+(require 'swiper)
+(global-set-key (kbd "C-l C-s") 'swiper)
+(ivy-mode 1)
+(counsel-mode 1)
