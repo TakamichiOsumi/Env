@@ -77,7 +77,8 @@
 (add-to-list 'load-path "~/.emacs.d")
 
 (require 'avy)
-(global-set-key (kbd "C-l C-c") 'avy-goto-char)
+(global-set-key (kbd "C-l C-c") 'avy-goto-char-timer)
+(global-set-key (kbd "C-l g") 'avy-goto-line)
 
 (require 'swiper)
 (global-set-key (kbd "C-l C-s") 'swiper)
