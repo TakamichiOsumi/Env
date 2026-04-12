@@ -116,9 +116,16 @@
              '("melpa" . "https://melpa.org/packages/"))
 
 (require 'yasnippet)
+(add-to-list 'load-path
+	     (expand-file-name "~/.emacs.d/python-mode/"))
+
 (yas-global-mode 1)
+;; To enable yasnippet in python-mode,
+;; execute 'yas-reload-all' once after python script is open.
+(define-key yas-minor-mode-map (kbd "C-l r") 'yas-reload-all)
 (define-key yas-minor-mode-map (kbd "C-l i") 'yas-insert-snippet)
 (define-key yas-minor-mode-map (kbd "C-l n") 'yas-new-snippet)
 (define-key yas-minor-mode-map (kbd "C-l v") 'yas-visit-snippet-file)
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets"))
+(custom-set-variables '(yas-trigger-key "TAB"))
