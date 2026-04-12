@@ -116,6 +116,8 @@
              '("melpa" . "https://melpa.org/packages/"))
 
 (require 'yasnippet)
+;; Create a directory for yasnippet. I named it as
+;; 'python-mode' under the .emacs.d.
 (add-to-list 'load-path
 	     (expand-file-name "~/.emacs.d/python-mode/"))
 
