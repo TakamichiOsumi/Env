@@ -1,5 +1,7 @@
-
 ;; basic settings.
+(setq ediff-diff-options "-w")
+(setq initial-major-mode 'text-mode)
+(setq scroll-step 1)
 
 (setq display-warning-minimum-level :error)
 (setq make-backup-files nil)
@@ -43,6 +45,8 @@
 (global-set-key (kbd "C-l C-g") 'goto-line)
 (global-set-key (kbd "C-l C-l") 'copy-region-as-kill)
 (global-set-key (kbd "C-l C-w") 'previous-buffer)
+(global-set-key (kbd "C-l C-k") 'kill-emacs)
+(global-set-key (kbd "C-l C-q") 'query-replace)
 
 (global-unset-key (kbd "C-q"))
 (global-set-key (kbd "C-q") 'execute-extended-command)
@@ -52,8 +56,7 @@
 ;; Additional gtags commands when required
 
 ; Add the dir path where gtags.el is stored to the load path.
-; (add-to-list 'load-path "~/foo/bar/")
-
+; (add-to-list 'load-path "~/foo/bar")
 ; (require 'gtags)
 ; (global-set-key (kbd "C-l C-d") 'gtags-find-tag)
 ; (global-set-key (kbd "C-l C-r") 'gtags-find-rtag)
@@ -69,14 +72,52 @@
 ;;
 ;; Refer to 'Manual Installation' in https://auto-complete.github.io/doc/manual.html#installation
 ;;
-;; (when load-file-name
-;;   (setq user-emacs-directory (file-name-directory load-file-name)))
-;; (add-to-list 'load-path "~/.emacs.d")
-;; (require 'auto-complete-config)
-;; (global-auto-complete-mode t)
-;; (ac-config-default)
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
+(add-to-list 'load-path "~/.emacs.d")
+
+(require 'avy)
+(global-set-key (kbd "C-l C-c") 'avy-goto-char)
 
 (require 'swiper)
 (global-set-key (kbd "C-l C-s") 'swiper)
-(ivy-mode 1)
-(counsel-mode 1)
+
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+(ac-config-default)
+
+;; (ivy-mode 1)
+;; (counsel-mode 1)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(avy bison-mode company company-jedi counsel eldoc helm magit
+	 web-mode yaml-mode yasnippet)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(global-set-key (kbd "C-x C-c") 'save-buffers-kill-emacs)
+
+(require 'company)
+(global-company-mode)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 2)
+(setq company-selection-wrap-around t)
+
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+
+(require 'yasnippet)
+(yas-global-mode 1)
+(define-key yas-minor-mode-map (kbd "C-l i") 'yas-insert-snippet)
+(define-key yas-minor-mode-map (kbd "C-l n") 'yas-new-snippet)
+(define-key yas-minor-mode-map (kbd "C-l v") 'yas-visit-snippet-file)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
