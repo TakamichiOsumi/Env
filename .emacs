@@ -47,7 +47,20 @@
 (global-set-key (kbd "C-l C-w") 'previous-buffer)
 (global-set-key (kbd "C-l C-k") 'kill-emacs)
 (global-set-key (kbd "C-l C-q") 'query-replace)
+(global-set-key (kbd "C-l C-m") 'comment-or-uncomment-region)
 
+;; kill until the enf of line.
+(global-set-key (kbd "C-l o") (lambda()
+				(interactive)
+				(kill-region (point) (pos-eol))))
+; kill until the enf of the buffer.
+(global-set-key (kbd "C-l u") (lambda()
+				(interactive)
+				(kill-region (point) (point-max))))
+; Copy the contents of the last-edited file in the same directory.
+(global-set-key (kbd "C-l C-a") (lambda ()
+				 (interactive)
+				 (shell-command "cat `ls -lt | head -2 | tail -1 | awk '{ print $9 }'` | grep -vE \"^[ \t]*#.*\" | pbcopy")))
 (global-unset-key (kbd "C-q"))
 (global-set-key (kbd "C-q") 'execute-extended-command)
 
@@ -131,3 +144,7 @@
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets"))
 (custom-set-variables '(yas-trigger-key "TAB"))
+
+;; python indentation.
+(global-set-key (kbd "C-l a") 'python-indent-shift-left)
+(global-set-key (kbd "C-l b") 'python-indent-shift-right)
