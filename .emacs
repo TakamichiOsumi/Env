@@ -59,8 +59,11 @@
 				(kill-region (point) (point-max))))
 ; Copy the contents of the last-edited file in the same directory.
 (global-set-key (kbd "C-l C-a") (lambda ()
-				 (interactive)
-				 (shell-command "cat `ls -lt | head -2 | tail -1 | awk '{ print $9 }'` | grep -vE \"^[ \t]*#.*\" | pbcopy")))
+				  (interactive)
+				  (shell-command "cat `ls -lt | head -2 | tail -1 | awk '{ print $9 }'` | grep -vE \"^[ \t]*#.*\" | pbcopy")))
+; Kill word from the cursor position.
+(global-set-key (kbd "C-l w") 'kill-word)
+
 (global-unset-key (kbd "C-q"))
 (global-set-key (kbd "C-q") 'execute-extended-command)
 
