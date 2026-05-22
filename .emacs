@@ -56,6 +56,7 @@
 (global-set-key (kbd "C-l e") (lambda()
 				(interactive)
 				(kill-region (point) (pos-eol))))
+
 ; kill until the enf of the buffer.
 (global-set-key (kbd "C-l u") (lambda()
 				(interactive)
@@ -65,6 +66,10 @@
 (global-set-key (kbd "C-l a") (lambda()
 				(interactive)
 				(kill-line 0)))
+
+; Kill word from the cursor position.
+(global-set-key (kbd "C-l w") 'kill-word)
+
 ; kill current region.
 (global-set-key (kbd "C-l r") 'kill-region)
 
@@ -72,8 +77,6 @@
 (global-set-key (kbd "C-l C-a") (lambda ()
 				  (interactive)
 				  (shell-command "cat `ls -lt | head -2 | tail -1 | awk '{ print $9 }'` | grep -vE \"^[ \t]*#.*\" | pbcopy")))
-; Kill word from the cursor position.
-(global-set-key (kbd "C-l w") 'kill-word)
 
 (global-unset-key (kbd "C-q"))
 (global-set-key (kbd "C-q") 'execute-extended-command)
