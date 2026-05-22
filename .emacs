@@ -44,19 +44,30 @@
 (global-set-key (kbd "C-l C-h") 'highlight-symbol-at-point)
 (global-set-key (kbd "C-l C-g") 'goto-line)
 (global-set-key (kbd "C-l C-l") 'copy-region-as-kill)
-(global-set-key (kbd "C-l C-w") 'previous-buffer)
+; (global-set-key (kbd "C-l C-w") 'previous-buffer)
 (global-set-key (kbd "C-l C-k") 'kill-emacs)
 (global-set-key (kbd "C-l C-q") 'query-replace)
 (global-set-key (kbd "C-l C-m") 'comment-or-uncomment-region)
 
+; Describe the current key bindings.
+(global-set-key (kbd "C-l d") 'helm-descbinds)
+
 ;; kill until the enf of line.
-(global-set-key (kbd "C-l o") (lambda()
+(global-set-key (kbd "C-l e") (lambda()
 				(interactive)
 				(kill-region (point) (pos-eol))))
 ; kill until the enf of the buffer.
 (global-set-key (kbd "C-l u") (lambda()
 				(interactive)
 				(kill-region (point) (point-max))))
+
+; kill until the beginning of the line.
+(global-set-key (kbd "C-l a") (lambda()
+				(interactive)
+				(kill-line 0)))
+; kill current region.
+(global-set-key (kbd "C-l r") 'kill-region)
+
 ; Copy the contents of the last-edited file in the same directory.
 (global-set-key (kbd "C-l C-a") (lambda ()
 				  (interactive)
@@ -140,14 +151,14 @@
 (yas-global-mode 1)
 ;; To enable yasnippet in python-mode,
 ;; execute 'yas-reload-all' once after python script is open.
-(define-key yas-minor-mode-map (kbd "C-l r") 'yas-reload-all)
-(define-key yas-minor-mode-map (kbd "C-l i") 'yas-insert-snippet)
-(define-key yas-minor-mode-map (kbd "C-l n") 'yas-new-snippet)
-(define-key yas-minor-mode-map (kbd "C-l v") 'yas-visit-snippet-file)
+(define-key yas-minor-mode-map (kbd "C-l C-y r") 'yas-reload-all)
+(define-key yas-minor-mode-map (kbd "C-l C-y i") 'yas-insert-snippet)
+(define-key yas-minor-mode-map (kbd "C-l C-y n") 'yas-new-snippet)
+(define-key yas-minor-mode-map (kbd "C-l C-y v") 'yas-visit-snippet-file)
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets"))
 (custom-set-variables '(yas-trigger-key "TAB"))
 
 ;; python indentation.
-(global-set-key (kbd "C-l a") 'python-indent-shift-left)
-(global-set-key (kbd "C-l b") 'python-indent-shift-right)
+(global-set-key (kbd "C-l m") 'python-indent-shift-left)
+(global-set-key (kbd "C-l n") 'python-indent-shift-right)
