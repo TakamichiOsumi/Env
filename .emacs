@@ -76,7 +76,7 @@
 ; Copy the contents of the last-edited file in the same directory.
 (global-set-key (kbd "C-l C-a") (lambda ()
 				  (interactive)
-				  (shell-command "cat `ls -lt | head -2 | tail -1 | awk '{ print $9 }'` | grep -vE \"^[ \t]*#.*\" | pbcopy")))
+				  (shell-command "cat `ls -lt | head -2 | tail -1 | awk '{ print $9 }'` | grep -vE \"^[ \t]*#.*\" | grep -vE \"^[ \t]*p\\(\" | pbcopy")))
 
 (global-unset-key (kbd "C-q"))
 (global-set-key (kbd "C-q") 'execute-extended-command)
