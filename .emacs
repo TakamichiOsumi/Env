@@ -71,7 +71,7 @@
 (global-set-key (kbd "C-l w") 'kill-word)
 
 ; kill current region.
-(global-set-key (kbd "C-l r") 'kill-region)
+(global-set-key (kbd "C-l k") 'kill-region)
 
 ; Copy the contents of the last-edited file in the same directory.
 (global-set-key (kbd "C-l C-a") (lambda ()
