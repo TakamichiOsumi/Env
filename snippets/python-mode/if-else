@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: ife
-# key: ife
+# name: ifelse
+# key: ifelse
 # --
-if $1:
-   $2
+$0if $1:
+    pass
 else:
-   $3
+    pass
