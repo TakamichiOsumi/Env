@@ -165,3 +165,6 @@
 ;; python indentation.
 (global-set-key (kbd "C-l m") 'python-indent-shift-left)
 (global-set-key (kbd "C-l n") 'python-indent-shift-right)
+
+(eval-after-load 'yasnippet
+  '(yas-global-mode))
