@@ -3,6 +3,7 @@
 (setq initial-major-mode 'text-mode)
 (setq scroll-step 1)
 (global-display-line-numbers-mode 1)
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 
 (setq display-warning-minimum-level :error)
 (setq make-backup-files nil)
