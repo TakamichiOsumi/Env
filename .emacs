@@ -69,6 +69,13 @@
 				(interactive)
 				(kill-line 0)))
 
+; Move to 'pass' keyword of python for competitive programming.
+(global-set-key (kbd "C-l l")
+		(lambda ()
+		(interactive)
+		(re-search-forward "file")
+		(cl-loop repeat 4 do (backward-char))))
+
 ; Kill word from the cursor position.
 (global-set-key (kbd "C-l w") 'kill-word)
 
