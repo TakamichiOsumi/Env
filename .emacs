@@ -73,7 +73,7 @@
 (global-set-key (kbd "C-l l")
 		(lambda ()
 		(interactive)
-		(re-search-forward "file")
+		(re-search-forward "pass")
 		(cl-loop repeat 4 do (backward-char))))
 
 ; Kill word from the cursor position.
