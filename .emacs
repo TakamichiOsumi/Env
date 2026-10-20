@@ -73,6 +73,7 @@
 (global-set-key (kbd "C-l l")
 		(lambda ()
 		(interactive)
+		(beginning-of-buffer)
 		(re-search-forward "pass")
 		(cl-loop repeat 4 do (backward-char))))
 
